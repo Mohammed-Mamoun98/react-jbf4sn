@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Question } from "./Question/index.jsx";
 import { Button } from "@material-ui/core";
 
 export const Questions = ({ questions = [] }) => {
@@ -29,7 +30,7 @@ export const Questions = ({ questions = [] }) => {
           Next
         </Button>
       </div>
-      {currentQuestion}
+      <Question question={questions[currentQuestion]} />
     </div>
   );
 };
