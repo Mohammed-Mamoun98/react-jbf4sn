@@ -28,7 +28,7 @@ export const Question = ({ question, onOptionClick = () => {} }) => {
               <Grow in timeout={index * 500}>
                 <Button
                   disabled={isSubmitted && selected !== optionId}
-                  style={{ width: "100%", marginTop: "0.5rem" }}
+                  className="w-100 mt-3"
                   onClick={() => onOptionClick(id, optionId)}
                   variant="contained"
                 >
