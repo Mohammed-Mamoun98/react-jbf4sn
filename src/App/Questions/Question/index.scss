@@ -1,0 +1,6 @@
+.question-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 3vw;
+  grid-row-gap: 2vw;
+}

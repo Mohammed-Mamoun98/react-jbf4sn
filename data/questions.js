@@ -32,14 +32,24 @@ const second_Q_Hint = "العلاقة ترادف";
 const second_Q_FeedBack = "لا يوجد تضاد إلا الخيار ب وباقي الخيارات غير مناسبة";
 const second_Q_Options = createOptions(second_optionsTitles, 1);
 
+export const secondQuestion = new Question(
+  second_Q_Title,
+  second_Q_Options,
+  uuid(),
+  second_Q_Hint,
+  second_Q_FeedBack
+);
+
 const third_Q_Title = "أول:آخر";
 const third_optionsTitles = ["حب:كره", "صداقة:صحبة", "ظهر:فجر", "جود:كرم"];
 const third_Q_Hint = "العلاقة تضاد";
 const third_Q_FeedBack = "لا يوجد تضاد إلا الخيار أ وباقي الخيارات غير مناسبة";
-const third_Q_Options = createOptions(second_optionsTitles, 0);
+const third_Q_Options = createOptions(third_optionsTitles, 0);
 
-export const secondQuestion = new Question(
-  second_Q_Title,
-  second_Q_Options,
-  uuid()
+export const thirdQuestion = new Question(
+  third_Q_Title,
+  third_Q_Options,
+  uuid(),
+  third_Q_Hint,
+  third_Q_FeedBack
 );

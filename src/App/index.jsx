@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
-import { firstQuestion, secondQuestion } from "../../data/questions.js";
+import {
+  firstQuestion,
+  secondQuestion,
+  thirdQuestion
+} from "../../data/questions.js";
 import { Button } from "@material-ui/core";
 import { Questions } from "./Questions/index";
 
@@ -8,7 +12,7 @@ export default function App() {
     console.log({ secondQuestion, a: 1 });
   }, []);
 
-  const questions = [firstQuestion, secondQuestion];
+  const questions = [firstQuestion, secondQuestion, thirdQuestion];
 
   return (
     <div className="container mt-5 d-flex flex-column">

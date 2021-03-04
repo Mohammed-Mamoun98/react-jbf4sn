@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Button, Grow } from "@material-ui/core";
-
+import { Button, Grow, Paper } from "@material-ui/core";
+import { Option } from "../../Components/Option/index.jsx";
+import "./index.scss";
 export const Question = ({ question, onOptionClick = () => {} }) => {
   const { options, title, isSubmitted = false, id, selected } = question;
   const [show, setShow] = useState(true);
@@ -22,18 +23,13 @@ export const Question = ({ question, onOptionClick = () => {} }) => {
     <div style={{ marginTop: "5rem" }}>
       <h3 className="text-center">{title}</h3>
       {show && (
-        <div className="row">
+        <div className="question-container">
           {options.map(({ title = "", id: optionId = 0 }, index) => (
-            <div className="col-md-6">
+            <div className="">
               <Grow in timeout={index * 500}>
-                <Button
-                  disabled={isSubmitted && selected !== optionId}
-                  className="w-100 mt-3"
-                  onClick={() => onOptionClick(id, optionId)}
-                  variant="contained"
-                >
-                  {title}
-                </Button>
+                <Paper elevation={0}>
+                  <Option title={title} />
+                </Paper>
               </Grow>
             </div>
           ))}
@@ -42,3 +38,13 @@ export const Question = ({ question, onOptionClick = () => {} }) => {
     </div>
   );
 };
+// <Option title={title} />
+
+// <Button
+//   disabled={isSubmitted && selected !== optionId}
+//   className="w-100 mt-3"
+//   onClick={() => onOptionClick(id, optionId)}
+//   variant="contained"
+// >
+//   {title}
+// </Button>
