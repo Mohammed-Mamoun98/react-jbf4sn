@@ -1,8 +1,10 @@
 export class Question {
-  constructor(title = "", options = [], id = 0) {
+  constructor(title = "", options = [], id = 0, hint = "", feedBack = "") {
     this.title = title;
     this.options = options;
     this.id = id;
+    this.hint = hint;
+    this.feedBack = feedBack;
   }
 }
 
