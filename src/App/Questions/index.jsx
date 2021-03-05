@@ -34,12 +34,12 @@ export const Questions = ({ questions: initQuestions = [] }) => {
     <div>
       <Timer
         disableTimer={disableNext}
-        value={10}
         style={{ color: "yellow" }}
         onTimerEnd={nextQuestion}
+        triggerRestart={currentQuestion}
       />
       <BorderLinearProgress
-        value={10}
+        value={progesValue}
         variant="determinate"
         style={{ height: "1.2rem", borderRadius: "15px" }}
       />

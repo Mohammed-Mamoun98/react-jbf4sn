@@ -6,34 +6,32 @@ export const Timer = ({
   style = null,
   onTimerEnd = () => {},
   disableTimer = false,
-  s = 10
+  triggerRestart = 0,
+  s = 5
 }) => {
   const [counter, setCounter] = useState(s - 1);
-  const progressValue = counter * 10;
+  const progressValue = (counter / s) * 100;
 
-  const decreaseCounter = () => {
-    // if (!counter) return;
-    setCounter(c => c - 1);
-  };
-  console.log({ counter, progressValue });
+  const decreaseCounter = () => setCounter(c => c - 1);
 
   useEffect(() => {
-    const iner = setInterval(() => {
-      if (!disableTimer) return;
-
-      if (counter < 0) {
-        alert("zero");
-        onTimerEnd();
-        // setCounter(s);
-        return;
+    console.log({ counter, progressValue });
+    const timer = setInterval(() => {
+      if (disableTimer) return;
+      if (counter <= 0) {
+        {
+          onTimerEnd();
+          return;
+        }
       }
       decreaseCounter();
     }, 1000);
+    return () => clearInterval(timer);
+  }, [counter]);
 
-    return () => {
-      clearInterval(iner);
-    };
-  }, []);
+  useEffect(() => {
+    if (triggerRestart) setCounter(s - 1);
+  }, [triggerRestart]);
 
   return (
     <>
