@@ -1,13 +1,5 @@
 @import "../../../constants/colors.scss";
 
-.option-clicked {
-  cursor: none;
-  background-color: $focused-option-bg;
-}
-.option-normal {
-  background-color: $focused-option-bg;
-}
-
 .option-continer {
   text-align: center;
   padding: 6% 5%;
@@ -15,4 +7,19 @@
   background-color: $base-option-bg;
   border-radius: 15px;
   cursor: pointer;
+
+  &.option-clicked {
+    background-color: $focused-option-bg;
+  }
+  &.option-normal {
+    background-color: $base-option-bg;
+  }
+
+  &.option-wrong {
+    background-color: $wrong-option-bg;
+  }
+
+  &.option-correct {
+    background-color: $correct-option-bg;
+  }
 }

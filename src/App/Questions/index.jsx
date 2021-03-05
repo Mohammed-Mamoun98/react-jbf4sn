@@ -29,11 +29,10 @@ export const Questions = ({ questions: initQuestions = [] }) => {
     setQuestions(questionsAfterEdit);
   };
 
-  console.log({ questions });
   return (
     <div>
       <Timer
-        disableTimer={disableNext}
+        disableTimer={true}
         style={{ color: "yellow" }}
         onTimerEnd={nextQuestion}
         triggerRestart={currentQuestion}
