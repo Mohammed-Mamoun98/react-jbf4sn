@@ -3,11 +3,12 @@ import { Question } from "./Question/index.jsx";
 import { Button } from "@material-ui/core";
 import { BorderLinearProgress } from "../Components/Progress/index.jsx";
 import { Timer } from "../Components/Timer/index.jsx";
+import { colors } from "";
 
 export const Questions = ({ questions: initQuestions = [] }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questions, setQuestions] = useState(initQuestions);
-  const progessValue = ((currentQuestion + 1) / questions.length) * 100;
+  const progesValue = ((currentQuestion + 1) / questions.length) * 100;
 
   const nextQuestion = () => setCurrentQuestion(c => c + 1);
   const prevQuestion = () => setCurrentQuestion(c => c - 1);
@@ -31,11 +32,16 @@ export const Questions = ({ questions: initQuestions = [] }) => {
   console.log({ questions });
   return (
     <div>
-      <Timer value={10} />
+      <Timer
+        disableTimer={disableNext}
+        value={10}
+        style={{ color: "yellow" }}
+        onTimerEnd={nextQuestion}
+      />
       <BorderLinearProgress
-        value={progessValue}
+        value={10}
         variant="determinate"
-        style={{ height: "1.5rem", borderRadius: "15px" }}
+        style={{ height: "1.2rem", borderRadius: "15px" }}
       />
       <Question
         question={questions[currentQuestion]}
