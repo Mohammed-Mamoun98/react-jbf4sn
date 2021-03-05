@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Grow, Paper } from "@material-ui/core";
 import { Option } from "../../Components/Option/index.jsx";
+import { Timer } from "../../Components/Timer/index.jsx";
+import { Title } from "./Title/index.jsx";
 import "./index.scss";
 export const Question = ({ question, onOptionClick = () => {} }) => {
   const { options, title, isSubmitted = false, id, selected } = question;
@@ -17,11 +19,10 @@ export const Question = ({ question, onOptionClick = () => {} }) => {
   useEffect(() => {
     toggleShow();
   }, [id]);
-  console.log({ question, options, title });
 
   return (
     <div style={{ marginTop: "5rem" }}>
-      <h3 className="text-center">{title}</h3>
+      <Title text={title} />
       {show && (
         <div className="question-container">
           {options.map(({ title = "", id: optionId = 0 }, index) => (

@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Question } from "./Question/index.jsx";
 import { Button } from "@material-ui/core";
+import { BorderLinearProgress } from "../Components/Progress/index.jsx";
+import { Timer } from "../Components/Timer/index.jsx";
 
 export const Questions = ({ questions: initQuestions = [] }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questions, setQuestions] = useState(initQuestions);
+  const progessValue = ((currentQuestion + 1) / questions.length) * 100;
 
   const nextQuestion = () => setCurrentQuestion(c => c + 1);
   const prevQuestion = () => setCurrentQuestion(c => c - 1);
 
   const disableNext = currentQuestion === questions.length - 1;
 
-  const submitQustion = (id , selected) => {
+  const submitQustion = (id, selected) => {
     const prevQuestion = questions.find(question => question.id === id);
     const newQuestion = {
       ...prevQuestion,
@@ -28,24 +31,12 @@ export const Questions = ({ questions: initQuestions = [] }) => {
   console.log({ questions });
   return (
     <div>
-      <div className="d-flex gap-lg">
-        <Button
-          disabled={!currentQuestion}
-          onClick={prevQuestion}
-          variant="contained"
-          className="flex-1"
-        >
-          Previos
-        </Button>
-        <Button
-          disabled={disableNext}
-          onClick={nextQuestion}
-          variant="contained"
-          className="flex-1"
-        >
-          Next
-        </Button>
-      </div>
+      <Timer value={10} />
+      <BorderLinearProgress
+        value={progessValue}
+        variant="determinate"
+        style={{ height: "1.5rem", borderRadius: "15px" }}
+      />
       <Question
         question={questions[currentQuestion]}
         onOptionClick={submitQustion}
