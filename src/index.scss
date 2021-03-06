@@ -6,11 +6,27 @@
   box-sizing: border-box;
   font-family: "Cairo", sans-serif;
 }
+html {
+  display: flex;
+  flex-direction: column;
+  & body,
+  #root {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+}
 
 .flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.border-sm-none {
+  @media (max-width: 600px) {
+    border: none !important;
+  }
 }
 
 .flex-1 {
@@ -27,4 +43,10 @@
 
 .gap-lg {
   gap: 3rem;
+}
+
+@media (max-width: 600px) {
+  .fill-at-mobile {
+    width: 100% !important;
+  }
 }

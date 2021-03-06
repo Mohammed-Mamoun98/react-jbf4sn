@@ -30,22 +30,25 @@ export const Questions = ({ questions: initQuestions = [] }) => {
   };
 
   return (
-    <div>
-      <Timer
-        disableTimer={true}
-        style={{ color: "yellow" }}
-        onTimerEnd={nextQuestion}
-        triggerRestart={currentQuestion}
-      />
+    <div className="d-flex flex-column flex-1">
       <BorderLinearProgress
         value={progesValue}
         variant="determinate"
         style={{ height: "1.2rem", borderRadius: "15px" }}
       />
       <Question
+        nextQuestion={nextQuestion}
         question={questions[currentQuestion]}
         onOptionClick={submitQustion}
+        disableNext={disableNext}
       />
     </div>
   );
 };
+
+// <Timer
+//   disableTimer={true}
+//   style={{ color: "yellow" }}
+//   onTimerEnd={nextQuestion}
+//   triggerRestart={currentQuestion}
+// />

@@ -15,7 +15,6 @@ export const Timer = ({
   const decreaseCounter = () => setCounter(c => c - 1);
 
   useEffect(() => {
-    console.log({ counter, progressValue });
     const timer = setInterval(() => {
       if (disableTimer) return;
       if (counter <= 0) {
@@ -34,8 +33,12 @@ export const Timer = ({
   }, [triggerRestart]);
 
   return (
-    <>
-      <DoubleCircularProgress value={progressValue} baseStyle={style} />
-    </>
+    <div className="w-100 d-flex justify-content-center pt-3">
+      <DoubleCircularProgress
+        value={progressValue}
+        baseStyle={style}
+        size={70}
+      />
+    </div>
   );
 };

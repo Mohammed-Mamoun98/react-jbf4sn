@@ -1,0 +1,14 @@
+.questions-whole-container {
+  max-width: 930px;
+  margin: 0 auto;
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .questions-whole-container {
+    padding: 30px !important;
+    margin-top: 0 !important;
+  }
+
+ 
+}

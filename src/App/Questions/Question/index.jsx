@@ -3,9 +3,16 @@ import { Button, Grow, Paper } from "@material-ui/core";
 import { Option } from "../../Components/Option/index.jsx";
 import { Timer } from "../../Components/Timer/index.jsx";
 import { Title } from "./Title/index.jsx";
+import { Hint as Help } from "./Hint/index.jsx";
+import { ToolBar } from "./Toolbar/index.jsx";
 import "./index.scss";
 
-export const Question = ({ question, onOptionClick = () => {} }) => {
+export const Question = ({
+  question,
+  onOptionClick = () => {},
+  nextQuestion = () => {},
+  disableNext = false
+}) => {
   const { options, title, id, selected } = question;
   const [show, setShow] = useState(true);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -19,10 +26,9 @@ export const Question = ({ question, onOptionClick = () => {} }) => {
     }, 100);
   };
 
-  console.log({ question });
-
   useEffect(() => {
     toggleShow();
+    setIsSubmitted(false);
   }, [id]);
 
   const handleCheck = () => setIsSubmitted(true);
@@ -46,39 +52,35 @@ export const Question = ({ question, onOptionClick = () => {} }) => {
   };
 
   return (
-    <div style={{ marginTop: "5rem" }}>
-      <Title text={title} />
-      <Button onClick={handleCheck}>Check</Button>
-
-      {show && (
-        <div className="question-container">
-          {options.map(
-            ({ title = "", id: optionId = 0, correct = false }, index) => (
-              <div className="">
-                <Grow in timeout={index * 500}>
-                  <Paper elevation={0}>
-                    <Option
-                      title={title}
-                      onClick={() => handleOptionClick(id, optionId)}
-                      status={getOptionStatus(optionId)}
-                    />
-                  </Paper>
-                </Grow>
-              </div>
-            )
-          )}
-        </div>
-      )}
-    </div>
+    <>
+      <div className="question-whole-container position-relative border-sm-none">
+        <Title text={title} />
+        {show && (
+          <div className="question-container">
+            {options.map(
+              ({ title = "", id: optionId = 0, correct = false }, index) => (
+                <div className="">
+                  <Grow in timeout={index * 500}>
+                    <Paper elevation={0}>
+                      <Option
+                        title={title}
+                        onClick={() => handleOptionClick(id, optionId)}
+                        status={getOptionStatus(optionId)}
+                      />
+                    </Paper>
+                  </Grow>
+                </div>
+              )
+            )}
+          </div>
+        )}
+      </div>
+      <ToolBar
+        onCheck={handleCheck}
+        onNext={nextQuestion}
+        disableNext={!isSubmitted || disableNext}
+        disableCheck={!selected || isSubmitted}
+      />
+    </>
   );
 };
-// <Option title={title} />
-
-// <Button
-//   disabled={isSubmitted && selected !== optionId}
-//   className="w-100 mt-3"
-//   onClick={() => onOptionClick(id, optionId)}
-//   variant="contained"
-// >
-//   {title}
-// </Button>

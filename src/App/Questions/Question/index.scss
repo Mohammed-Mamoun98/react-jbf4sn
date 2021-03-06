@@ -1,7 +1,23 @@
 .question-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 3vw;
+  grid-column-gap: 6vw;
   grid-row-gap: 2vw;
-  margin-top: 5rem;
+  margin-top: 50px !important;
+  @media (max-width: 600px) {
+    grid-column-gap: 1vw;
+  }
+}
+
+.question-whole-container {
+  margin-top: 3rem;
+  border: 1px yellow solid;
+  border-radius: 15px;
+  padding: 50px;
+
+  @media (max-width: 600px) {
+    padding: 10px;
+    padding-bottom: 50px;
+    margin-top: 30px !important;
+  }
 }
